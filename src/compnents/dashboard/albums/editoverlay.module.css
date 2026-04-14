@@ -1,0 +1,1180 @@
+/* ----------------------style for edit album overlay ---------------------------- */
+.EditAlbumOverlay {
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+    padding-top: 0;
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--midnight-blue-2);
+
+    transform: translateX(100%);
+    transition: 200ms ease-in-out;
+}
+
+.ShowEditAlbumOverlayHidden {
+    transform: translateX(0);
+}
+
+.InfoBtn {
+    font-size: 1.3rem;
+
+    position: absolute;
+    top: 5px;
+    left: 5px;
+
+    color: var(--white-smoke);
+    cursor: pointer;
+}
+
+.EditAlbumInfoDialog {
+    width: 260px;
+    border-radius: 3px;
+    padding: 3px 6px;
+
+    position: absolute;
+    left: 0;
+    top: 100%;
+    z-index: 3;
+
+    font-size: .7rem;
+    font-weight: bold;
+
+    color: var(--midnight-blue-2);
+    background-color: var(--ciment);
+
+    pointer-events: none;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    cursor: default;
+}
+
+.EditAlbumInfoDialog::after {
+    content: '';
+    display: block;
+
+    height: 8px;
+    width: 8px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+
+    transform: translate(75%, -50%) rotate(45deg);
+    background-color: inherit;
+
+}
+
+.ShowEditAlbumInfoDialog {
+    pointer-events: unset;
+    opacity: 1;
+}
+
+.CloseBtn {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    cursor: pointer;
+
+    font-size: 1rem;
+    color: var(--midnight-blue-2);
+    background-color: var(--white-smoke);
+}
+
+
+/* ---------------------------------header starts----------------------------- */
+.Header {
+    margin-top: 35px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+
+}
+
+.AlbumImg {
+    height: 150px;
+    width: 150px;
+    border-radius: 5px;
+
+    background-color: white;
+    position: relative;
+
+}
+
+.AlbumImg img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.AlbumImgEditBtn {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    left: 50%;
+    bottom: 0px;
+    transform: translate(-50%, 40%);
+
+    color: var(--ciment);
+    background-color: var(--midnight-blue-2);
+    cursor: pointer;
+}
+
+.AlbumImgResetBtn {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    color: var(--ciment);
+    background-color: var(--midnight-blue-2);
+    cursor: pointer;
+}
+
+.AlbumImgResetBtn svg {
+    font-size: .9rem;
+}
+
+.AlbumTitleWrapper,
+.ALbumGenre {
+    width: 75%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+}
+
+.ALbumGenre {
+    width: fit-content;
+    max-width: 75%;
+    z-index: 2;
+}
+
+
+.AlbumTitleWrapper span {
+    cursor: pointer;
+    font-size: .9rem;
+    font-weight: 600;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    color: var(--white-smoke);
+
+}
+
+.AlbumTitleWrapper input {
+    width: 100%;
+    font-size: .9rem;
+    font-weight: 600;
+
+    border: none;
+    outline: none;
+    text-align: center;
+
+    background-color: transparent;
+    color: var(--white-smoke);
+}
+
+.ALbumGenre {
+    margin-bottom: 3px;
+}
+
+.ALbumGenre span {
+    color: var(--ciment);
+
+    font-size: .7rem;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.ListOverlayWrapper {
+    height: 100%;
+    width: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    backdrop-filter: blur(15px);
+    background-color: rgba(0, 0, 0, .6);
+
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(.9);
+    transition: 200ms ease-in-out;
+}
+
+
+.ItemList {
+    width: 90%;
+    max-height: 70%;
+    border-radius: 5px;
+
+    overflow-y: auto;
+    scrollbar-width: none;
+    background-color: var(--midnight-blue-2);
+
+
+}
+
+.Item {
+    width: 100%;
+    padding: 5px 10px;
+
+    font-size: .9rem;
+    font-weight: bold;
+    color: var(--white-smoke);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.Item svg {
+    flex: 0 0 auto;
+}
+
+.Item:hover {
+    background-color: var(--midnight-shade-1);
+}
+
+.AlbumActionBtn {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    margin-top: 15px;
+}
+
+.AlbumActionBtn span {
+    width: fit-content;
+
+    font-size: .7rem;
+    font-weight: bold;
+    color: var(--ciment);
+
+    cursor: pointer;
+}
+
+.AlbumActionBtn button {
+    width: fit-content;
+    border: 0;
+    outline: 0;
+
+    padding: 5px;
+    border-radius: 3px;
+    font-size: .7rem;
+    font-weight: bold;
+
+    color: var(--midnight-blue-2);
+    background-color: var(--light-green);
+}
+
+.Body {
+    width: 100%;
+
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    overflow: hidden;
+}
+
+.BodyHeader {
+    width: 100%;
+    margin-top: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.BodyHeader h2 {
+    margin-left: 5px;
+    font-size: 1rem;
+    color: var(--white-smoke);
+}
+
+.BodyHeader button {
+    outline: none;
+    border: none;
+
+    margin-right: 5px;
+    font-size: .8rem;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--white-smoke);
+    background: transparent;
+}
+
+.BodyHeader button svg {
+    font-size: 1.1rem;
+    padding-top: 1px;
+}
+
+
+.Body h3 {
+    font-size: 1rem;
+    font-style: italic;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+    color: var(--ciment);
+}
+
+.TrackContainer {
+    width: 100%;
+
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    overflow-y: auto;
+    scrollbar-width: none;
+
+    border-radius: 5px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.Track {
+    width: 100%;
+    padding: 5px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    cursor: default;
+
+    background-color: var(--ciment);
+    color: var(--onyx);
+
+    transition: 200ms ease-in-out;
+}
+
+.TrackSelectionStyle {
+    background-color: transparent;
+    color: var(--white-smoke);
+    border: 1px solid var(--victory-grey);
+}
+
+.TrackImg {
+    height: 30px;
+    width: 30px;
+    flex: 0 0 auto;
+    background-color: palegoldenrod;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.TrackImg img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.Track p {
+    width: calc(100% - (30px + 55px));
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: .8rem;
+    font-weight: 600;
+}
+
+.Track span {
+    width: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 3px;
+    font-size: .7rem;
+}
+
+.BodyFooter {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    font-size: .8rem;
+}
+
+.BodyFooter span {
+    color: var(--white-smoke);
+
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.BodyFooter span svg {
+    font-size: 1.1rem;
+}
+
+.BodyFooterBtnWrapper {
+    flex-grow: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.BodyFooterBtnWrapper button {
+    border: none;
+    outline: none;
+
+    cursor: pointer;
+
+    width: fit-content;
+    padding: 5px 8px;
+    border-radius: 5px;
+
+    color: var(--white-smoke);
+    background-color: transparent;
+}
+
+.BodyFooterBtnWrapper button:last-child {
+    background-color: var(--rust-red);
+}
+
+/* -----------------------------for list overlay skeleton loading */
+.SkeletonContainer {
+    width: 90%;
+    max-height: 70%;
+    border-radius: 5px;
+
+    overflow-y: hidden;
+    background-color: var(--midnight-blue-2);
+}
+
+.SkeletonItem {
+    width: 100%;
+    padding: 5px 10px;
+
+    font-size: .9rem;
+    font-weight: bold;
+    color: var(--white-smoke);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.SkeletonItem span:first-child,
+.SkeletonItem span:last-child {
+    position: relative;
+    overflow: hidden;
+
+    background-color: var(--obsidian-black);
+}
+
+.SkeletonItem span:first-child {
+    flex-grow: 1;
+    height: 17px;
+    border-radius: 5px;
+}
+
+.SkeletonItem span:last-child {
+    width: 17px;
+    height: 17px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+}
+
+.SkeletonItem span:first-child::before,
+.SkeletonItem span:last-child::before {
+    content: '';
+    height: 100%;
+    width: 100%;
+    display: block;
+    position: absolute;
+    background: linear-gradient(90deg, transparent, #37414f47, transparent);
+    top: 0%;
+    left: 0px;
+    animation: skeletonAnimation 2s linear infinite;
+}
+
+
+/* ----------------------style for edit album overlay ---------------------------- */
+.EditTrackOverlay {
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: inherit;
+
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(.9);
+    transition: 200ms ease-in-out;
+}
+
+
+.BackToEditAlbumBtn {
+    font-size: 1rem;
+    padding: 8px 5px;
+
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    cursor: pointer;
+    color: var(--white-smoke);
+}
+
+.SwitchTrackWrapper {
+    max-width: 100%;
+    width: fit-content;
+    margin-top: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    color: var(--white-smoke);
+    cursor: pointer;
+}
+
+.SwitchTrackWrapper span,
+.TrackGenre {
+    width: fit-content;
+    max-width: 100%;
+
+    font-size: .9rem;
+    font-weight: bold;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.SwitchTrackWrapper>svg {
+    font-size: 1.2rem;
+    flex: 0 0 auto;
+}
+
+.TrackGenre {
+    font-size: .7rem;
+    font-weight: unset;
+    margin-top: 2px;
+
+    cursor: default;
+    color: #b7bbc1;
+}
+
+.EditTrackCenter {
+    width: 250px;
+    margin-top: 5px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.TrackImgWrapper {
+    width: 100%;
+    height: 150px;
+
+    position: relative;
+    overflow: hidden;
+
+    border-radius: 15px;
+}
+
+.TrackImgWrapper>img {
+    height: 100%;
+    width: 100%;
+
+    object-fit: cover;
+    transform: scale(1.5);
+}
+
+.TrackImgContainer {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.TrackImgContainer>img {
+    height: 90px;
+    width: 90px;
+
+    border-radius: 15px;
+    object-fit: cover;
+}
+
+.EditTrackImgBtn,
+.ResetTrackImgBtn {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--white-smoke);
+    background-color: var(--midnight-blue-2);
+
+    cursor: pointer;
+}
+
+.ResetTrackImgBtn {
+    bottom: unset;
+    top: 0;
+    font-size: .8rem;
+}
+
+.EditTrackTitleWrapper,
+.EditTrackLanguageWrapper {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.EditTrackTitleWrapper input {
+    outline: none;
+    border: none;
+
+    width: 100%;
+    font-size: .9rem;
+    font-weight: bold;
+
+    color: var(--white-smoke);
+    background-color: transparent;
+}
+
+.EditTrackTitleWrapper span,
+.EditTrackLanguageWrapper span {
+    max-width: 100%;
+    width: fit-content;
+    display: block;
+
+    font-size: .9rem;
+    font-weight: bold;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    cursor: pointer;
+    color: var(--white-smoke);
+}
+
+.EditTrackLanguageWrapper {
+    margin-top: 3px;
+}
+
+.EditTrackLanguageWrapper span {
+    font-size: .8rem;
+    font-weight: unset;
+    color: var(--ciment);
+}
+
+.Seekbar {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.Seekbar span {
+    flex: 0 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1.1rem;
+
+    color: var(--white-smoke);
+    cursor: pointer;
+}
+
+.Seekbar span:last-child {
+    font-size: .7rem;
+    cursor: default;
+}
+
+.TrackEditNResetBtns {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 5px;
+}
+
+.TrackEditNResetBtns button {
+    outline: none;
+    border: none;
+
+    width: fit-content;
+    padding: 5px;
+
+    border-radius: 3px;
+    border: 2px solid var(--ciment);
+
+    font-size: .7rem;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    color: var(--ciment);
+    background-color: transparent;
+}
+
+.TrackEditNResetBtns button:first-child {
+    border: unset;
+
+    font-size: .8rem;
+    font-weight: unset;
+}
+
+.FtArtistsWrapper {
+    margin-top: 15px;
+    width: 100%;
+    padding: 0 7px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.FtArtistsWrapper h2 {
+    width: fit-content;
+
+    font-size: .9rem;
+    color: var(--white-smoke);
+
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    cursor: pointer;
+    position: relative;
+}
+
+.FtArtists {
+    width: 100%;
+    max-height: 168px;
+    height: fit-content;
+
+    overflow-y: auto;
+    scrollbar-width: none;
+
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.FtArtists span {
+    font-size: .7rem;
+    font-weight: bold;
+    padding: 3px 5px;
+
+    border-radius: 3px;
+    line-break: anywhere;
+
+    color: var(--midnight-blue-2);
+    background-color: var(--ciment);
+}
+
+.EditFtArtistOverlay {
+    height: 100%;
+    width: 100%;
+    border-radius: 16px;
+    padding: 15px;
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(15px);
+
+    opacity: 0;
+    transform: scale(.9);
+    pointer-events: none;
+    transition: 200ms ease-in-out;
+}
+
+.ShowOverlay {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+    pointer-events: unset !important;
+}
+
+.EditFtArtistOverlay h2 {
+    font-size: .9rem;
+    color: var(--white-smoke);
+}
+
+.FtArtistInputWrapper {
+    width: 100%;
+    position: relative;
+}
+
+.FtArtistInputWrapper input {
+    border: none;
+    outline: none;
+
+    width: 100%;
+    padding: 5px 8px;
+    padding-right: 26px;
+    border-radius: 3px;
+
+    background-color: var(--white-smoke);
+}
+
+.FtArtistInputWrapper span {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+.FtArtistsList {
+    margin-top: 3px;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.FtArtistsList span {
+    padding: 3px 5px;
+    border-radius: 3px;
+
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    line-break: anywhere;
+
+    font-size: .7rem;
+    font-weight: bold;
+    background-color: var(--ciment);
+}
+
+.EditTrackActionBtn {
+    margin-top: 25px;
+    width: 100%;
+    padding-right: 7px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.EditTrackActionBtn button {
+    outline: none;
+    border: none;
+    border-radius: 3px;
+
+    padding: 5px;
+    font-size: .7rem;
+    font-weight: bold;
+
+    cursor: pointer;
+    background-color: var(--light-green);
+}
+
+.EditTrackActionBtn button:first-child {
+    font-weight: unset;
+    font-size: .8rem;
+    color: var(--white-smoke);
+    background-color: transparent;
+}
+
+/* ---------------------pop-up wrapper------------------------------ */
+.PopupWrapper,
+.LoaderContainer {
+    height: 100%;
+    width: 100%;
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    backdrop-filter: blur(15px);
+    background-color: rgba(0, 0, 0, 0.2);
+
+    opacity: 0;
+    transform: scale(.9);
+    pointer-events: none;
+    transition: 200ms ease-in-out;
+}
+
+.LoaderContainer {
+    backdrop-filter: blur(3px);
+}
+
+/* --------------------------------------------------popup style ------------------ */
+.InfoPopup,
+.DeleteConfirmationPopup,
+.DiscardPopup,
+.RestoreDefaultPopup {
+    width: 100%;
+    max-width: 95%;
+    max-height: 90%;
+    border-radius: 8px;
+
+    padding: 8px 10px;
+    padding-bottom: 13px;
+    padding-right: 17px;
+    background-color: var(--white-smoke);
+
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.DeleteConfirmationPopup {
+    padding: 10px;
+}
+
+.InfoPopup h2,
+.DeleteConfirmationPopup h2,
+.DiscardPopup h2,
+.RestoreDefaultPopup>h2 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: var(--deep-slate);
+}
+
+.InfoPopup p,
+.DeleteConfirmationPopup p,
+.DiscardPopup p,
+.RestoreDefaultPopup>p {
+    font-size: .9rem;
+    margin-bottom: 15px;
+    color: var(--charcoal);
+}
+
+.DeleteConfirmationPopup>p:nth-of-type(2) {
+    font-weight: bold;
+}
+
+.DeleteConfirmationPopup>p:last-of-type {
+    margin-bottom: 3px;
+}
+
+.DeleteConfirmationPopup>p b {
+    font-size: .8rem;
+    color: var(--rust-red);
+    user-select: text;
+}
+
+.DeleteConfirmationPopup>span {
+    width: 100%;
+    margin-bottom: 5px;
+    padding-right: 3px;
+    font-size: .7rem;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 3px;
+}
+
+.DeleteConfirmationPopup>span svg {
+    font-size: .9rem;
+}
+
+.DeleteConfirmationPopup input {
+    outline: none;
+    border: 2px solid var(--victory-grey);
+    border-radius: 4px;
+
+    width: 100%;
+    max-width: 280px;
+    padding: 5px;
+    margin-bottom: 15px;
+
+    background-color: transparent;
+}
+
+.RestoreDefaultPopup>p {
+    margin-bottom: 8px;
+}
+
+.RestoreDefaultPopup>ul {
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+
+    margin-bottom: 15px;
+}
+
+.RestoreDefaultPopup>ul li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.RestoreDefaultPopup>ul li span {
+    font-size: .8rem;
+    font-weight: bold;
+    text-transform: capitalize;
+    color: var(--deep-slate);
+}
+
+.RestoreDefaultPopup>ul li svg {
+    color: black;
+}
+
+.InfoPopup div,
+.DeleteConfirmationPopup div,
+.DiscardPopup div,
+.RestoreDefaultPopup>div {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.InfoPopup button,
+.DeleteConfirmationPopup button,
+.DiscardPopup button,
+.RestoreDefaultPopup button {
+    outline: none;
+    border: none;
+
+    font-size: .9rem;
+    color: var(--midnight-blue-2);
+    background-color: transparent;
+
+    cursor: pointer;
+}
+
+.DeleteConfirmationPopup button:last-child {
+    padding: 5px;
+    border-radius: 5px;
+
+    color: var(--white-smoke);
+    background-color: var(--rust-red);
+}
+
+.InfoPopup button {
+    padding: 3px 10px;
+    border-radius: 5px;
+
+    color: var(--midnight-blue-2);
+    background-color: var(--light-green);
+}
+
+/* --------------------animations---------------------------------- */
+@keyframes skeletonAnimation {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    50% {
+        transform: translateX(50%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}

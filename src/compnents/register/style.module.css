@@ -1,0 +1,528 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Patrick+Hand&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    --fhHeight: 50px;
+
+
+    --charcoal: #333333;
+    --dark-grey: #555555;
+    --deep-slate: #2f2f2f;
+    --deep-blue: #1b3b5f;
+    --burgundy: #6d2e46;
+    --moss-green: #566e56;
+    --rust-red: #9b2d2d;
+    --obsidian-black: #101010;
+    --onyx: #1c1c1c;
+    --dark-slate-grey: #2e2e2e;
+    --deep-indigo: #3a1c71;
+    --dark-emerald: #1c3f2f;
+    --burned-umber: #8a3324;
+    --sapphire-blue: #11366c;
+    --copper-brown: #9b5d3f;
+    --ochre-yellow: #8b6c1d;
+    --olive-green: #626d35;
+    --victory-black: #26282d;
+    --victory-grey: #898787;
+    --light-green: #56e456;
+    --light-red: #e45656;
+    --list-black: #191a1d;
+
+    /* midnight  blue */
+    --midnight-blue-1: #191f2a;
+    --midnight-blue-2: #222831;
+    --steal-blue: #567d93;
+    --silver: #c0c0c0;
+    --white-smoke: #f5f5f5;
+    --emerald-green: #1c3f2a;
+    --gold-enrod: #daa520;
+
+    /* Melted Chocolate */
+    --dark-blue: #252827;
+    --cream-choco: #fffee6;
+    --coffee-brown: #291211;
+    --yellow: #f8cf2c;
+
+    /* Gingerbread Ice Cream */
+    --beige-1: #6f5b3e;
+    --beige-2: #c4ae78;
+    --cream-ice-cream: #f9f6f0;
+    --black-ice-cream: #171515;
+}
+
+.MainContainer {
+    background-color: var(--obsidian-black);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 100px;
+    /* font-family: "Patrick Hand", cursive; */
+    font-family: "Josefin Sans", sans-serifs;
+}
+
+.PosterContainer {
+    width: 50%;
+    height: 100%;
+    max-height: 651px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+/* swiper js -- for poster container */
+
+.Swiper {
+    height: 100%;
+    width: 100%;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.SwiperSlide {
+    height: 100%;
+    width: 100%;
+}
+
+.SwiperSlide img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* form container */
+
+.FormContainer {
+    background-color: transparent;
+    width: 35%;
+    height: 100%;
+    max-height: 651px;
+    overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    padding: 15px 30px;
+}
+
+/* header */
+
+.FormHeader {
+    height: var(--fhHeight);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.FormSwitchBtn {
+    color: var(--silver);
+    height: 60%;
+    align-items: center;
+    font-size: 1rem;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.FormSwitchBtn .Border {
+    height: 5px;
+    width: 0%;
+    border-radius: 15px;
+    background-color: var(--silver);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    transition: 200ms ease-in-out;
+}
+
+.FormSwitchBtn .ShowBorder {
+    width: 30%;
+}
+
+/* formbody */
+
+.FormBody {
+    width: 100%;
+    height: calc(100% - var(--fhHeight));
+    padding: 10px 0;
+    padding-top: 20px;
+}
+
+.FormFieldWrapper {
+    width: 100%;
+    padding-top: 9px;
+    padding-bottom: 7px;
+    margin-bottom: 15px;
+    border-radius: 3px;
+    border-left: 5px solid transparent;
+    transition: 100ms ease-in-out;
+    background-color: var(--victory-black);
+}
+
+.InputField {
+    width: 100%;
+    position: relative;
+}
+
+.InputField input {
+    width: 100%;
+    outline: none;
+    border: none;
+    padding: 5px 15px;
+    padding-right: 30px;
+    font-size: 1rem;
+    background-color: transparent;
+    color: var(--silver);
+}
+
+.FormFieldWrapper:focus-within {
+    border-color: var(--dark-grey);
+}
+
+.InputField label {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    transition: 200ms ease-in-out;
+    font-size: 1rem;
+    color: var(--silver);
+}
+
+.InputField input:is(:valid, :focus)~label {
+    top: 0;
+    transform: translateY(-100%);
+    font-size: .8rem;
+    color: var(--victory-grey);
+}
+
+.Icon {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--light-green);
+    font-size: 1.2rem;
+}
+
+.IconError {
+    color: var(--light-red);
+}
+
+.IconError:active {
+    color: #e67979;
+}
+
+.ErrorBox {
+    position: absolute;
+    padding: 2px;
+    right: 0;
+    font-size: .85rem;
+    border-radius: 3px;
+    background-color: var(--black-ice-cream);
+    color: var(--silver);
+    display: none;
+}
+
+.profileErrorBox {
+    top: 85%;
+}
+
+.ShowBlock {
+    display: block;
+}
+
+/* gender wrapper */
+.GenderWrapper {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.Gender {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 20px;
+    color: var(--silver);
+    background-color: var(--victory-black);
+}
+
+.Gender label {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.GenderIcon {
+    height: 40px;
+    width: 40px;
+    min-height: 40px;
+    min-width: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--dark-grey);
+    color: var(--silver);
+    cursor: pointer;
+    font-size: 1.3rem;
+    transition: 100ms ease-in-out;
+}
+
+.GenderSelected {
+    background-color: var(--light-green);
+    color: var(--victory-black);
+}
+
+/* country wrapper */
+.CountryWrapper {
+    width: 100%;
+    background-color: var(--victory-black);
+    padding: 13px 20px;
+    padding-right: 8px;
+    border-radius: 3px;
+    color: var(--silver);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.CountryWrapper label {
+    text-transform: capitalize;
+}
+
+.CountryList {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    max-height: 146px;
+    overflow: hidden;
+    overflow-y: auto;
+    display: none;
+    flex-direction: column;
+    background-color: var(--list-black);
+    z-index: 1;
+}
+
+.Country {
+    width: 100%;
+    padding: 5px 8px 5px 20px;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+.Country:hover {
+    background-color: var(--midnight-blue-2);
+}
+
+.ShowFlex {
+    display: flex;
+}
+
+.Hide {
+    display: none;
+}
+
+.Rotate180 {
+    transform: rotateX(180deg);
+}
+
+/* Profile Wrapper */
+.ProfileWrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 5px;
+    position: relative;
+}
+
+.ProfileLabel {
+    width: 30%;
+}
+
+.ProfileLabel label {
+    width: 100%;
+    height: 40px;
+    border-radius: 3px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--silver);
+    background-color: var(--victory-black);
+}
+
+.Profile {
+    width: 70%;
+    height: 40px;
+    border-radius: 3px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background-color: var(--victory-black);
+    display: flex;
+    transition: 100ms ease-in-out;
+}
+
+.Profile:hover {
+    background-color: #1a1a1e;
+}
+
+.Profile input {
+    display: none;
+}
+
+.Profile img {
+    background-color: var(--cream-ice-cream);
+    max-height: 100%;
+    max-width: 40px;
+    min-height: 100%;
+    min-width: 40px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.BrowseBtn {
+    flex-grow: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--silver);
+    cursor: pointer;
+}
+
+.FormSubmitBtn {
+    width: 30%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    cursor: pointer;
+    color: var(--victory-black);
+    background-color: var(--light-green);
+    margin-top: 25px;
+    outline: none;
+    border: none;
+    font-size: 1rem;
+}
+
+.BottomLink {
+    width: 100%;
+    margin-bottom: 15px;
+    color: var(--silver);
+}
+
+.Link {
+    color: var(--light-green);
+    cursor: pointer;
+}
+
+.Link:hover {
+    text-decoration: underline;
+}
+
+/* responsive */
+
+@media (max-width : 1368px) {
+    .FormContainer {
+        width: 42%;
+    }
+}
+
+@media (max-width : 1176px) {
+    .FormContainer {
+        width: 50%;
+    }
+}
+
+@media (max-width : 1020px) {
+    .MainContainer {
+        padding: 40px 50px;
+    }
+
+    .FormContainer {
+        padding-right: 0;
+    }
+}
+
+@media (max-width : 900px) {
+    .MainContainer {
+        padding: 0 25px;
+    }
+}
+
+@media (max-width : 851px) {
+    .PosterContainer {
+        display: none;
+    }
+
+    .FormContainer {
+        padding: 0;
+        width: 75%;
+    }
+}
+
+@media (max-width : 551px) {
+    .MainContainer {
+        align-items: flex-start;
+        padding-top: 20px;
+    }
+
+    .FormContainer {
+        width: 85%;
+    }
+
+    .FormBody {
+        padding-top: 15px;
+    }
+
+    .GenderIcon,
+    .Country,
+    .BrowseBtn,
+    .FormSubmitBtn,
+    .Link,
+    .FormSwitchBtn {
+        cursor: unset;
+    }
+}
+
+@media (max-width : 451px) {
+    .FormContainer {
+        width: 95%;
+    }
+}
+
+@media (max-width : 388px) {
+    :root {
+        font-size: 13px;
+    }
+}
+
+/* for loader */
+
+.LoaderContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.8);
+    align-items: center;
+    justify-content: center;
+}

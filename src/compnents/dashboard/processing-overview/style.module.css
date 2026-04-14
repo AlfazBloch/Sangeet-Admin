@@ -1,0 +1,850 @@
+* {
+    --blue-shade-1: #edf0f5;
+    --blue-shade-2: #e3e8f1;
+    --blue-shade-3: #d8dfe8;
+    --blue-shade-4: #d7e3fa;
+    --blue-shade-5: #6495b4;
+
+    --pending-yellow: #dbdb74;
+    --processing-blue: #cdddf8;
+}
+
+.ProcessingOverview {
+    height: 100%;
+    width: 100%;
+    padding-top: 27px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+    user-select: none;
+}
+
+.Header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    color: var(--midnight-blue-2);
+}
+
+.Header h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.Header .ModalWrapper {
+    display: none !important;
+}
+
+.PageInfoContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+}
+
+.PageInfoContainer svg {
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+
+/* .Information {
+    width: 425px;
+    padding: 20px;
+
+    position: absolute;
+    left: 100%;
+    top: 0%;
+    transform: translate(15px, -7px);
+    
+    border-radius: 5px;
+    background-color: var(--blue-shade-5);    
+}
+
+.Information::after {
+    content: '';
+
+    width: 10px;
+    height: 10px;
+
+    position: absolute;
+    left: 0%;
+    top: 0%;
+
+    transform: translate(-45%, 12px) rotateZ(45deg);
+    background-color: inherit;
+}
+
+.Information h2 {
+    font-size: 0.9rem;
+}
+
+.Information>p {
+    font-size: 0.8rem;
+    margin-top: 3px;
+}
+
+.InfoList {
+    width: 100%;
+    margin-top: 8px;
+    padding: 5px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    
+}
+
+.InfoList h3 {
+    width: 100%;
+    font-size: 0.8rem;
+
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.InfoList h3::before {
+    content: '';
+
+    height: 4px;
+    width: 4px;
+    border-radius: 50%;
+    
+    background-color: black;
+}
+
+.Information .InfoList:last-child {
+    margin-top: 15px;
+}
+
+.Information .InfoList:last-child h3::before {
+    all: unset;
+}
+
+.InfoList p {
+    font-size: 0.8rem;
+    padding-left: 9px;
+}
+
+.ListItem {
+    width: 100%;
+    padding-left: 9px;
+    margin-top: 5px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+} */
+.Information {
+    width: 425px;
+    padding: 16px;
+    position: absolute;
+    left: 100%;
+    top: 0%;
+    transform: translate(15px, -7px);
+    border-radius: 8px;
+    background-color: #ffffff;
+    /* Pure white for clarity */
+    border: 1px solid #e0e0e0;
+    /* Soft border */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow */
+
+    opacity: 0;
+    pointer-events: none;
+    transition: 200ms ease-in-out;
+}
+
+.Information::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    left: 0;
+    top: 12px;
+    transform: translate(-50%, 0) rotate(45deg);
+    background-color: inherit;
+    /* Match popup background */
+    border-left: 1px solid #e0e0e0;
+    /* Match popup border */
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.Information h2 {
+    font-size: 0.9rem;
+    color: #1a1a1a;
+    /* Dark gray for heading */
+    margin-bottom: 8px;
+}
+
+.Information>p {
+    font-size: 0.8rem;
+    color: #444;
+    /* Medium gray for body text */
+    margin-bottom: 12px;
+}
+
+.InfoList {
+    margin-bottom: 12px;
+}
+
+.InfoList h3 {
+    font-size: 0.8rem;
+    color: #1a1a1a;
+    /* Dark gray for subheadings */
+    margin-bottom: 4px;
+}
+
+.InfoList p {
+    font-size: 0.8rem;
+    color: #666;
+    /* Light gray for details */
+    margin-bottom: 4px;
+}
+
+.ListItem {
+    margin-top: 8px;
+    padding-left: 8px;
+    border-left: 2px solid #e0e0e0;
+    /* Subtle divider */
+}
+
+.ListItem h3 {
+    font-size: 0.8rem;
+    color: #333;
+    /* Slightly lighter than heading */
+    margin-bottom: 4px;
+}
+
+.ListItem p {
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 4px;
+}
+
+/* Note section */
+.Information .InfoList:last-child {
+    background-color: #f8f9fa;
+    /* Light gray background for notes */
+    padding: 8px;
+    border-radius: 4px;
+    margin-top: 12px;
+}
+
+
+.ContainerWrapper {
+    flex-grow: 1;
+    width: 100%;
+
+    display: flex;
+    gap: 10px;
+
+    overflow: hidden;
+}
+
+.AwaitingActionsContainer,
+.FailedActionsContainer {
+    width: calc(50% - 10.5px);
+    height: 100%;
+    background-color: var(--blue-shade-1);
+}
+
+.HorizontalDivider {
+    width: 100%;
+    height: 1px;
+    border-radius: 5px;
+    background-color: var(--silver);
+}
+
+.VerticalDivider {
+    height: 100%;
+    width: 1px;
+    border-radius: 5px;
+    background-color: var(--silver);
+}
+
+.AwaitingActionsContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.AwaitingActionsHeader {
+    width: 100%;
+    min-height: 40px;
+    padding: 0 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.AwaitingActionsHeader .Summary {
+    font-size: .9rem;
+    font-weight: bold;
+    color: var(--dark-grey);
+}
+
+.AwaitingActionsHeader .Controls {
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.RefreshContainer {
+    display: flex;
+    gap: 5px;
+}
+
+.RefreshContainer span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: .8rem;
+    color: var(--midnight-blue-2);
+}
+
+.RefreshContainer span:last-child {
+    height: 22px;
+    width: 22px;
+    border-radius: 5px;
+
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 200ms ease-in-out;
+    color: var(--dark-grey);
+}
+
+.RefreshContainer span:last-child:hover {
+    background-color: var(--blue-shade-3);
+}
+
+.ToggleBtns {
+    display: flex;
+    border-radius: 5px;
+
+    background-color: var(--blue-shade-3);
+    color: var(--blue-shade-5);
+}
+
+.ToggleBtns span {
+    height: 25px;
+    width: 25px;
+    border-radius: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: .9rem;
+    cursor: pointer;
+    transition: 200ms ease-in-out;
+}
+
+.SelectedToggleBtn {
+    background-color: var(--blue-shade-5);
+    color: var(--blue-shade-3);
+}
+
+.AwaitingActionsBody,
+.FailedActionsBody {
+    width: 100%;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.NodeWrapper {
+    width: 100%;
+}
+
+.Node {
+    width: 100%;
+    height: 40px;
+
+    display: flex;
+
+    color: var(--midnight-shade-1);
+    cursor: pointer;
+}
+
+.Node:hover,
+.NodeProcess:hover {
+    background-color: var(--blue-shade-3) !important;
+}
+
+.NodeName {
+    flex-grow: 1;
+    height: 100%;
+
+    padding: 0 10px;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.NodeName svg {
+    flex: 0 0 auto;
+}
+
+.NodeName svg:nth-of-type(1) {
+    font-size: .7rem;
+}
+
+.NodeName svg:nth-of-type(2) {
+    font-size: 1rem;
+}
+
+.NodeName span {
+    flex-grow: 1;
+    font-size: .8rem;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.NodeData {
+    width: 250px;
+    height: 100%;
+    padding: 0 10px;
+
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.NodeData span {
+    font-size: .8rem;
+}
+
+.Badge {
+    padding: 3px 8px;
+    border-radius: 3px;
+}
+
+.NodeProcess {
+    width: 100%;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    color: var(--midnight-shade-1);
+}
+
+.ProcessName {
+    height: 100%;
+    width: 144px;
+    padding: 0 10px;
+    font-size: .8rem;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ProcessName svg {
+    font-size: 1rem;
+    flex: 0 0 auto;
+}
+
+.NodeProcess span,
+.ProcessName span {
+    font-size: .8rem;
+}
+
+.FailedActionsContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.FailedActionsHeader {
+    width: 100%;
+    padding: 25px 15px;
+    padding-bottom: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.FailedActionsHeader h2 {
+    font-size: 1.3rem;
+    color: var(--dark-grey);
+}
+
+.FailedActionsHeader .Controls {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+.FailedActionsHeader .Controls span {
+    font-size: 1rem;
+    padding: 0 6px;
+    padding-bottom: 3px;
+
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-bottom: 4px solid transparent;
+
+    cursor: pointer;
+    color: var(--midnight-shade-1);
+    transition: 100ms ease-in-out;
+}
+
+.FailedActionsBody .Node {
+    cursor: unset;
+}
+
+.FailedActionsBody .Node .NodeActions {
+    height: 100%;
+    padding-right: 10px;
+
+    display: flex;
+    align-items: center;
+    gap: 42px;
+}
+
+.FailedActionsBody .Node .NodeActions span {
+    height: 100%;
+
+    font-size: .8rem;
+    font-weight: bold;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+}
+
+.ImageBox {
+    height: 100%;
+    aspect-ratio: 1/1;
+
+    border-radius: 5px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.ImageBox img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.ImagePreviewer {
+    height: 100%;
+    width: 100%;
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgba(0, 0, 0, .7);
+
+    opacity: 0;
+    pointer-events: none;
+    transition: 200ms ease-in-out;
+}
+
+.ShowImagePreview {
+    opacity: 1;
+    pointer-events: unset;
+}
+
+.ImagePreviewer img {
+    width: 300px;
+    aspect-ratio: 1/1;
+
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.FailedActionsBody .Node .NodeData {
+    width: 200px;
+}
+
+.FailedActionsBody .Node .NodeData span:not(:first-child) {
+    height: 100%;
+    font-weight: bold;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+}
+
+.FailedActionsBody .NodeProcess .ProcessAction {
+    height: 100%;
+    flex-grow: 1;
+    padding-right: 10px;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.FailedActionsBody .NodeProcess .ProcessAction .ImageBox {
+    margin-right: 42px;
+}
+
+.FailedActionsBody .NodeProcess .ProcessAction span {
+    height: 100%;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+}
+
+.AudioPreviewer {
+    flex-grow: 1;
+    margin-right: 45px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.AudioPreviewer svg {
+    flex: 0 0 auto;
+    font-size: 1rem;
+}
+
+.AudioPreviewer span:first-child {
+    cursor: pointer;
+}
+
+.AudioPreviewer span {
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ContainerWrapperHeader {
+    width: 100%;
+    padding: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.ContainerWrapperHeader span {
+    color: var(--dark-grey);
+}
+
+.ContainerWrapperHeader span:not(:nth-child(2)) {
+    font-size: .9rem;
+    cursor: pointer;
+}
+
+.ModalWrapper {
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgba(0, 0, 0, .7);
+
+    opacity: 0;
+    pointer-events: none;
+    transition: 200ms ease-in-out;
+}
+
+.ShowModal {
+    opacity: 1;
+    pointer-events: unset;
+}
+
+.Modal {
+    max-width: 400px;
+    width: 100%;
+
+    padding: 15px;
+    padding-bottom: 5px;
+    border-radius: 8px;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--white-smoke);
+}
+
+.Modal h2 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: var(--deep-slate);
+}
+
+.Modal p {
+    font-size: .9rem;
+    margin-bottom: 15px;
+    color: var(--charcoal);
+}
+
+.ModalBtn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.ModalBtn span {
+    font-size: .9rem;
+    padding: 5px;
+    cursor: pointer;
+
+    color: var(--midnight-blue-2);
+}
+
+.NotFoundContainer {
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: .75rem;
+    font-weight: bold;
+    font-style: italic;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+    text-align: center;
+    color: var(--dark-grey);
+}
+
+
+
+/* media queries */
+@media (max-width:1200px) {
+    .ProcessingOverview {
+        gap: unset;
+    }
+
+    .ContainerWrapper {
+        flex-direction: column;
+        gap: unset;
+    }
+
+    .AwaitingActionsContainer,
+    .FailedActionsContainer {
+        width: 100%;
+        flex-grow: 1;
+        overflow: hidden;
+    }
+}
+
+@media (max-width:884px) {
+    .PageInfoContainer>.Information {
+        display: none;
+    }
+
+    .Header .ModalWrapper {
+        display: flex !important;
+    }
+
+    .Header .ModalWrapper .Information {
+        max-height: 100%;
+        min-height: fit-content;
+        width: 100%;
+        max-width: 425px;
+
+        transform: unset;
+        overflow-y: auto;
+
+        position: relative;
+        top: unset;
+        left: unset;
+    }
+
+    .Header .ModalWrapper .Information::after {
+        all: unset;
+    }
+
+    .Header .CloseBtn{
+        position: absolute;
+        top: 10px;
+        right: 8px;
+    }
+
+
+}
+
+@media (max-width:716px) {
+    .NodeData {
+        width: 170px;
+    }
+
+    .ProcessingOverview {
+        padding-top: 20px;
+    }
+
+    .Header {
+        padding: 0 10px;
+    }
+
+    .FailedActionsHeader {
+        padding-top: 15px;
+    }
+
+    .FailedActionsHeader h2 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width:575px) {
+
+    .FailedActionsBody .Node .NodeData,
+    .NodeData {
+        width: 140px;
+    }
+
+    .FailedActionsBody .NodeProcess {
+        gap: 5px;
+    }
+
+    .FailedActionsBody .NodeProcess .ProcessAction .ImageBox {
+        margin-right: 12px;
+    }
+
+    .AudioPreviewer {
+        margin-right: 15px;
+    }
+}
+
+@media (max-width:388px) {
+    .ProcessName {
+        width: fit-content;
+    }
+
+    .NodeProcess {
+        gap: 20px;
+    }
+}

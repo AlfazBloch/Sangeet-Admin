@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    /* ------coolors----------- */
+    --midnight-shade-1: #27374d;
+    --ciment: #d8dce3;
+}
+
+/* ----------------------------------resusable 1 - Dropdown.jsx */
+.Dropdown {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 0 10px;
+    font-size: .9rem;
+    border-radius: 5px;
+    position: relative;
+    align-items: center;
+    color: var(--ciment);
+    justify-content: space-between;
+    background-color: var(--midnight-shade-1);
+    user-select: none;
+}
+
+.List {
+    max-height: 107px;
+    width: 100%;
+    border-radius: 5px;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    background-color: var(--ciment);
+    z-index: 2;
+}
+
+.List span {
+    display: block;
+    padding: 5px 15px;
+    cursor: pointer;
+    font-size: .9rem;
+    color: var(--midnight-blue-2);
+}
+
+.List span:hover {
+    background-color:#cccfd5;
+}
+
+/* ----------------------------------resusable 2 - initsrcloader.jsx */
+.InitSrcLoader{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ----------------------------------resusable 3 - Checkbox.jsx */
+.CheckboxWrapper{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    user-select: none;
+}
+.Checkbox{
+    height: 15px;
+    width: 15px;
+    border: 2px solid var(--midnight-blue-2);
+    border-radius: 2px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.Checkbox svg{
+    height: 100%;
+    width: 100%;
+}
+.CheckboxWrapper label{
+    font-size: .8rem;
+    color: var(--midnight-blue-2);
+}

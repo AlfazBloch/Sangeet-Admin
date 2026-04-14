@@ -1,0 +1,2944 @@
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.AdminPanel {
+    font-family: "ABeeZee", sans-serif;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    position: relative;
+    background-color: var(--white-smoke);
+    overflow: hidden;
+}
+
+.PopUpWrapper {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 3;
+
+    background-color: #00000070;
+    user-select: none;
+}
+
+.RedirectPopUp {
+    width: 100%;
+    max-width: 400px;
+
+    border-radius: 10px;
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--white-smoke);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.223),
+        0 6px 20px rgba(0, 0, 0, 0.265);
+}
+
+.RedirectPopUp h2 {
+    margin-bottom: 8px;
+    font-size: 1rem;
+    color: var(--midnight-shade-1);
+}
+
+.RedirectPopUp p {
+    font-size: .9rem;
+    color: var(--midnight-blue-2);
+}
+
+.RedirectPopUp a {
+    width: fit-content;
+    border-radius: 5px;
+    padding: 8px;
+    margin-top: 10px;
+
+    text-decoration: none;
+    font-size: .8rem;
+    font-weight: bold;
+
+    align-self: flex-end;
+
+    background-color: var(--light-green);
+    color: var(--midnight-blue-2);
+}
+
+
+.AudioConflictInfoPopUp {
+    max-width: 440px;
+    width: 100%;
+    border-radius: 10px;
+
+    background-color: var(--white-smoke);
+    padding: 20px;
+    padding-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.223),
+        0 6px 20px rgba(0, 0, 0, 0.265);
+}
+
+.AudioConflictInfoPopUp h2 {
+    color: var(--midnight-shade-1);
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.AudioConflictInfoPopUp p {
+    color: var(--midnight-blue-2);
+    font-size: .9rem;
+    margin-bottom: 15px;
+}
+
+.AudioConflictInfoPopUp button {
+    outline: none;
+    border: none;
+    align-self: flex-end;
+    width: fit-content;
+    padding: 8px;
+    border-radius: 5px;
+    margin-top: 10px;
+    color: var(--midnight-blue-2);
+    background-color: var(--light-green);
+    cursor: pointer;
+}
+
+.PlayerNotSuppotedWarnPopUp {
+    max-width: 550px;
+    width: 100%;
+    max-height: 100%;
+    border-radius: 10px;
+    padding: 20px;
+    padding-bottom: 15px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    background-color: var(--white-smoke);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.223),
+        0 6px 20px rgba(0, 0, 0, 0.265);
+
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.PopUpTop {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.PopUpTop h2 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.PopUpTop span {
+    font-size: .9rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.PopUpTop p {
+    font-size: .9rem;
+}
+
+.PopUpCenter {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.PopUpCenter h2 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.ItemList {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.Item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.Item span {
+    display: flex;
+    align-items: center;
+    font-size: .9rem;
+    font-weight: bold;
+}
+
+.Item span svg {
+    font-size: .7rem;
+}
+
+.Item p {
+    font-size: .9rem;
+    padding-left: 15px;
+}
+
+.PopUpCenter .ItemList:last-child {
+    padding-top: 5px;
+    padding-left: 25px;
+}
+
+.PopUpBottom {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.PopUpBottom h2 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.PopUpBottom p {
+    font-size: .9rem;
+    margin-bottom: 5px;
+}
+
+.PopUpBottom .ItemList {
+    padding-left: 15px;
+}
+
+.PlayerNotSuppotedWarnPopUp button {
+    outline: none;
+    border: none;
+    align-self: flex-end;
+    width: fit-content;
+    padding: 8px;
+    border-radius: 5px;
+    margin-top: 10px;
+    color: var(--midnight-blue-2);
+    background-color: var(--light-green);
+    cursor: pointer;
+}
+
+.PopUpBottom p:last-child {
+    margin-top: 5px;
+}
+
+
+/* admin panel starts from here/ */
+
+.Sidebar {
+    min-width: 70px;
+    height: 95%;
+    border-radius: 20px;
+    background-color: var(--midnight-blue-2);
+}
+
+.Logo {
+    width: 70px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    flex: 0 0 auto;
+
+    color: var(--ciment);
+}
+
+.Logo img {
+    width: 40px;
+    object-fit: contain;
+}
+
+.Logo span {
+    font-size: 12px;
+    font-weight: 600;
+    user-select: none;
+
+    background: linear-gradient(to left, #9bbc84 20%, #5a9e3e);
+    background-clip: text;
+    color: transparent;
+}
+
+.NavLinksWrapper {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.SidebarIcon {
+    width: 100%;
+    font-size: 1.2rem;
+    margin: 10px 0;
+    padding: 10px 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 auto;
+    color: var(--silver);
+    text-decoration: none;
+    transition: 100ms ease-in-out;
+}
+
+.Active {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+
+    transform: translateX(11px);
+    background-color: var(--white-smoke);
+    color: var(--midnight-blue-2);
+}
+
+.Active span {
+    background-color: var(--white-smoke) !important;
+    color: var(--midnight-blue-2) !important;
+}
+
+.ProcessOverview {
+    position: relative;
+}
+
+.ProcessOverview span {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+
+    font-size: .7rem;
+    font-weight: bold;
+
+    position: absolute;
+    top: 5px;
+    right: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--midnight-blue-2);
+    color: var(--white-smoke);
+}
+
+.NavbarOverlay {
+    height: 100%;
+    width: 90px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    overflow: hidden;
+    transition: 200ms ease-in-out;
+    background-color: var(--midnight-blue-2);
+}
+
+.ExpOverlay {
+    width: 100%;
+}
+
+.OverlayAlbumOrTrack {
+    min-width: 90px;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--midnight-blue-2);
+}
+
+.AlbumImg {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.AlbumImg::before {
+    content: '';
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: rgba(255, 255, 255, .15);
+    z-index: 1;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.AlbumImg img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: 200ms ease-in-out;
+}
+
+.AlbumImg:hover>img {
+    transform: scale(1.1);
+}
+
+.TrackImg {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+}
+
+.TrackImg::before {
+    content: '';
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--midnight-blue-2);
+    z-index: 2;
+}
+
+.TrackImg::after {
+    content: '';
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: rgba(255, 255, 255, .15);
+}
+
+.TrackImg:hover {
+    height: 45px;
+    width: 45px;
+    transition: 200ms ease-in-out;
+}
+
+.TrackImg img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    background-color: var(--ciment);
+    animation: Rotate360 4s linear infinite;
+}
+
+.PauseRotation {
+    animation-play-state: paused !important;
+}
+
+.PlaybarExpander {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.PlaybarExpander svg {
+    min-height: 20px;
+    min-width: 10px;
+    rotate: 180deg;
+    color: var(--ciment);
+    background-color: var(--midnight-blue-1);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.OverlayPlaybar {
+    height: 100%;
+    width: calc(100% - 90px);
+    display: flex;
+    color: var(--ciment);
+    position: relative;
+    padding-right: 25px;
+    overflow: hidden;
+    background: linear-gradient(to right, var(--midnight-blue-2), var(--primarySidebarBc));
+}
+
+.PlaybarLeft {
+    height: 100%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 3px;
+    padding: 0 5px;
+}
+
+.PlaybarLeft p,
+.PlaybarLeft>span {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.PlaybarLeft p {
+    font-size: .9rem;
+    font-weight: 600;
+}
+
+.PlaybarLeft>span {
+    font-size: .7rem;
+    text-overflow: ellipsis;
+}
+
+.PlaybarLeft p>span {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+.SeamlessSlider {
+    position: relative;
+}
+
+.SeamlessSlider::before,
+.SeamlessSlider::after {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 10px;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    user-select: none;
+}
+
+.SeamlessSlider::before {
+    left: 0;
+    background: linear-gradient(to left, transparent, var(--midnight-blue-2));
+}
+
+.SeamlessSlider::after {
+    right: 0;
+    background-color: transparent;
+}
+
+.SeamlessSlider span {
+    display: inline-block;
+    animation: marquee 15s linear infinite;
+}
+
+.SeamlessSlider span:first-child {
+    margin-right: 70px;
+}
+
+.PlaybarCenter {
+    height: 100%;
+    width: 70%;
+    display: flex;
+    gap: 3px;
+    align-items: center;
+    justify-content: center;
+}
+
+.SeekbarContainer {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.SeekbarContainer span {
+    font-size: .7rem;
+}
+
+.SeekbarContainer input {
+    height: 4px;
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 15px;
+    background-color: var(--ciment);
+
+}
+
+.SeekbarContainer input::-moz-range-thumb {
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--cream-choco);
+}
+
+.SeekbarContainer input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--midnight-shade-1);
+}
+
+.SeekbarContainer input::-moz-range-progress {
+    background-color: var(--light-green);
+    height: 100%;
+    border-radius: 15px;
+}
+
+.InterationContainer {
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.SideBtn,
+.PlayPauseBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.SideBtn {
+    height: 20px;
+    width: 20px;
+}
+
+.PlayPauseBtn {
+    height: 25px;
+    width: 25px;
+}
+.PlayPauseBtn.Disabled {
+    color: #a7a7aa;
+}
+
+.SideBtn svg,
+.PlayPauseBtn svg {
+    height: 100%;
+    width: 100%;
+}
+
+
+.PlaybarCollapser {
+    height: 100%;
+    width: 15px;
+    border-radius: 20px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--light-green);
+    color: var(--midnight-blue-2);
+}
+
+.PlaybarCollapser svg {
+    font-size: 1.3rem;
+}
+
+.UndraggableSeekbar {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 95%;
+    height: 3px;
+    background-color: var(--victory-grey);
+    display: none;
+}
+
+.UndraggableSeekbar span {
+    height: 100%;
+    width: 10%;
+    background-color: var(--light-green);
+    display: block;
+    transition: 200ms ease-in-out;
+}
+
+/* body area */
+.PageContainerWrapper {
+    flex-grow: 1;
+    height: 95%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    overflow-y: hidden;
+}
+
+.PageContainer {
+    width: 100%;
+    flex-grow: 1;
+    padding: 0 27px;
+    padding-right: 5px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.MasterLayoutPlaybarWrapper,
+.BottomInfoBannerWrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 35px 0 50px;
+}
+
+.BottomInfoBanner {
+    width: fit-content;
+    padding: 5px 8px;
+    border-radius: 5px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    background-color: var(--midnight-blue-2);
+    color: var(--ciment);
+}
+
+.MasterLayoutPlaybar {
+    width: 100%;
+    background-color: var(--midnight-blue-2);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 50px;
+    padding: 5px 10px;
+    padding-top: 8px;
+    border-radius: 8px;
+}
+
+.MLPLeft {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 8px;
+}
+
+.MLPTrackImg {
+    height: 40px;
+    width: 40px;
+    border-radius: 5px;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.MLPTrackImg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.MLPTrackInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    width: 150px;
+}
+
+.MLPTrackInfo span {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.MLPTrackInfo span:first-child {
+    font-size: .8rem;
+    font-weight: 600;
+    color: var(--white-smoke);
+}
+
+.MLPTrackInfo span:last-child {
+    font-size: .7rem;
+    color: var(--ciment);
+}
+
+.MLPCenter {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.MLPSeekBar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--ciment);
+}
+
+.MLPSeekBar span {
+    font-size: .7rem;
+}
+
+.MLPInteractionBtns {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+}
+
+.MLPInteractionBtns span {
+    margin-bottom: -5px;
+}
+
+.MLPInteractionBtns span:first-child {
+    color: var(--ciment);
+    font-size: 1rem;
+}
+
+.MLPInteractionBtns span:last-child {
+    color: var(--ciment);
+    font-size: 1.1rem;
+}
+
+.MLPPlayPauseBtn {
+    background-color: var(--white-smoke);
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1rem;
+    margin-bottom: unset !important;
+}
+
+.MLPPlayPauseBtn.Disabled {
+    background-color: #a7a7aa;
+}
+.MLPSideBtns {
+    font-size: 1.4rem;
+    color: var(--ciment);
+}
+
+.MLPRight {
+    width: 150px;
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--white-smoke);
+}
+
+.MLPRight>span {
+    cursor: pointer;
+    font-size: .9rem;
+    margin-top: 5.3px;
+}
+
+.MobileAlbumSidebar {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    transition: 200ms ease-in-out;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    user-select: none;
+    background-color: var(--obsidian-black);
+    color: var(--white-smoke);
+}
+
+/* ----------------------------------------------------- header */
+.HeaderWrapper {
+    width: 100%;
+    border-bottom-right-radius: 100px;
+    overflow: hidden;
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.HeaderWrapper>img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transform: scale(1.5) translateY(15%);
+}
+
+.Header {
+    width: 100%;
+    padding-top: 7px;
+    color: var(--ciment);
+
+    backdrop-filter: blur(50px);
+    background-color: rgba(0, 0, 0, .2);
+    position: relative;
+}
+
+.TopArea {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 7px;
+}
+
+.TopArea span {
+    height: 20px;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.TopArea span svg {
+    height: 100%;
+    width: 100%;
+}
+
+.HeadingText {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+}
+
+.HeadingText h2 {
+    font-size: .7rem;
+    font-weight: 100;
+}
+
+.HeadingText p {
+    font-size: .8rem;
+    font-weight: 600;
+}
+
+.BottomArea {
+    width: 100%;
+    display: flex;
+    padding: 10px 15px;
+    padding-top: 20px;
+}
+
+.ImgContainer {
+    width: 200px;
+    aspect-ratio: 1/1;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.ImgContainer img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.AlbumDataContainer {
+    width: calc(100% - 200px);
+    display: flex;
+    flex-direction: column;
+    padding-left: 15px;
+    gap: 30px;
+
+    position: relative;
+}
+
+.AlbumMeta {
+    width: 100%;
+}
+
+.AlbumMeta h2 {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1.1rem;
+}
+
+.AlbumMeta p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: .9rem;
+    margin-top: 2px;
+}
+
+.CreatedAt {
+    font-size: .8rem;
+}
+
+.AlbumMetrics {
+    width: 100%;
+    display: flex;
+    gap: 50px;
+}
+
+.Metric {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1px;
+}
+
+.Metric span {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.Metric p {
+    font-size: .8rem;
+}
+
+.EditALbumBtn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+}
+
+.EditALbumBtn>span {
+    width: 1px;
+    height: 100%;
+    background-color: var(--white-smoke);
+}
+
+.EditALbumBtn button {
+    border: none;
+    outline: none;
+    font-size: inherit;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    background-color: transparent;
+    color: var(--white-smoke);
+}
+
+/* -----------------------------------------------------body */
+.Body {
+    width: 100%;
+    padding: 15px 30px;
+
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+
+    overflow: hidden;
+    position: relative;
+}
+
+.Body>h3 {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--ciment);
+}
+
+.SoundControlOverlay {
+    width: 50%;
+    height: 0;
+    max-width: 354px;
+
+    border-radius: 8px;
+    padding: 0 8px;
+
+    position: absolute;
+    left: 50%;
+    bottom: 15px;
+    transform: translateX(-50%) translateY(20px);
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    overflow: hidden;
+    opacity: 0;
+    background-color: var(--midnight-blue-2);
+    transition: 200ms ease-in-out;
+}
+
+.SoundControlOverlay>span svg {
+    margin-top: 2px;
+    font-size: 1rem;
+}
+
+.SoundControlOverlay>span {
+    width: 21px;
+    font-size: .7rem;
+    margin-left: 5px;
+}
+
+.ShowSoundControlOverlay {
+    transform: translateX(-50%) translateY(0);
+    height: 30px;
+    overflow: unset;
+    opacity: 1;
+}
+
+.BodyHead {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.BodyHead h2 {
+    font-size: 1.1rem;
+}
+
+.AudioSettingContainer {
+    display: flex;
+    align-self: flex-end;
+    align-items: center;
+    gap: 8px;
+    color: var(--white-smoke);
+}
+
+.AudioSettingContainer span {
+    font-size: .7rem;
+}
+
+.TrackContainer {
+    width: 100%;
+    flex-grow: 1;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.Track {
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+
+.TrackIndex {
+    font-size: 1rem;
+    font-weight: bold;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.TrackIndex svg {
+    font-size: .8rem;
+    color: var(--secondarySidebarBc);
+}
+
+.Img {
+    height: 40px;
+    width: 40px;
+    border-radius: 8px;
+    overflow: hidden;
+    flex: 0 0 auto;
+}
+
+.Img img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.TrackTitle {
+    font-size: 1rem;
+    width: 40%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 15px;
+}
+
+.SelectedTrackTitle {
+    color: var(--secondarySidebarBc);
+}
+
+.TrackMeta {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: .8rem;
+}
+
+.TrackMeta span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.EditAlbumBottomArea {
+    width: 100%;
+    font-size: .9rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.EditAlbumBottomArea span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    font-size: inherit;
+}
+
+.EditAlbumBottomArea span svg {
+    font-size: 1.2rem;
+}
+
+.DeleteNCancelTrackBtnsWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.DeleteNCancelTrackBtnsWrapper button {
+    border: none;
+    outline: none;
+
+    font-size: inherit;
+    padding: 5px;
+    border-radius: 5px;
+
+    background-color: transparent;
+    color: var(--white-smoke);
+}
+
+.DeleteNCancelTrackBtnsWrapper button:last-child {
+    background-color: var(--rust-red);
+}
+
+/* -----------------------------------------------------footer */
+.FooterWrapper {
+    width: 95%;
+    height: 0;
+    opacity: 0;
+    transform: translateY(50px);
+
+    flex: 0 0 auto;
+    position: relative;
+    overflow: hidden;
+
+    border-radius: 20px;
+    margin-bottom: 15px;
+
+    transition: 200ms ease-in-out;
+}
+
+.FooterWrapper>img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.ShowFooterWrapper {
+    height: 80px;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.Extra {
+    width: 200%;
+    height: 400px;
+
+    backdrop-filter: blur(50px);
+    background-color: rgba(0, 0, 0, .2);
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.Footer {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+    padding: 10px 30px;
+    padding-top: 15px;
+
+    backdrop-filter: blur(50px);
+    background-color: rgba(0, 0, 0, .2);
+
+    position: relative;
+    left: 0;
+    top: 0;
+}
+
+.ActiveSetting {
+    position: relative;
+    color: var(--secondarySidebarBc) !important;
+}
+
+.ActiveSetting::after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 3px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--secondarySidebarBc);
+}
+
+.FtInteractionBtns {
+    width: 100%;
+    max-width: 650px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    position: relative;
+}
+
+.FtInteractionBtns span {
+    font-size: 1.1rem;
+    margin-top: 5px;
+    color: var(--white-smoke);
+}
+
+.FtInteractionBtns span:last-child {
+    position: absolute;
+    right: 6px;
+}
+
+.FtPlayPauseBtn {
+    height: 33px;
+    width: 33px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--obsidian-black) !important;
+    background-color: var(--white-smoke);
+    margin: unset !important;
+}
+
+.FtPlayPauseBtn svg {
+    font-size: 1.1rem;
+}
+
+.FtSideBtns svg {
+    color: var(--white-smoke);
+    font-size: 1.6rem;
+}
+
+.FtSeekbarContainer {
+    width: 100%;
+    max-width: 650px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.FtSeekbarContainer span {
+    font-size: .7rem;
+}
+
+/* ------------------------------------------------------------for edit album overlay  */
+.MobileEditAlbumOverlay {
+    height: 100%;
+    width: 100%;
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10%) scale(.9);
+    transition: 200ms ease-in-out;
+
+    background-color: var(--obsidian-black);
+    display: flex;
+    flex-direction: column;
+}
+
+.EditAlbumTopBtns {
+    width: 100%;
+    padding: 7px 7px 0 7px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: relative;
+}
+
+.EditAlbumTopBtns span {
+    height: 20px;
+    width: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.EditAlbumTopBtns span svg {
+    height: 100%;
+    width: 100%;
+}
+
+.EditAlbumInfoDialog {
+    position: absolute;
+    left: 40px;
+    top: 20%;
+    z-index: 2;
+
+    width: fit-content;
+    max-width: 85%;
+
+    padding: 8px;
+    border-radius: 3px;
+    font-size: .8rem;
+
+    background-color: var(--victory-black);
+    transition: 200ms ease-in-out;
+}
+
+.EditAlbumInfoDialog::after {
+    content: '';
+    display: block;
+
+    height: 10px;
+    width: 10px;
+
+    position: absolute;
+    left: 0;
+    top: 7px;
+    z-index: -1;
+
+    transform: translate(-50%) rotate(45deg);
+    background-color: inherit;
+}
+
+.EditAlbumHeader {
+    width: 100%;
+    padding: 10px 15px;
+    padding-top: 20px;
+
+    display: flex;
+}
+
+.EditAlbumImgWrapper {
+    height: 200px;
+    width: 200px;
+    border-radius: 20px;
+
+    flex: 0 0 auto;
+
+    background-color: var(--ciment);
+    position: relative;
+}
+
+.EditAlbumImgWrapper img {
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.EditAlbumImgWrapper span {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+
+    position: absolute;
+    font-size: 1rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--white-smoke);
+    background-color: var(--obsidian-black);
+}
+
+.EditAlbumImgWrapper span:first-child {
+    top: -5px;
+    right: -5px;
+    font-size: .9rem;
+}
+
+.EditAlbumImgWrapper span:last-child {
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+}
+
+.EditAlbumContentWrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    overflow: hidden;
+    padding-left: 15px;
+}
+
+.EditAlbumTitle {
+    width: 100%;
+    max-width: 360px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.EditAlbumTitle label {
+    font-size: .8rem;
+    font-weight: bold;
+    margin-left: 3px;
+}
+
+.EditAlbumTitle input {
+    width: 100%;
+    padding: 8px 10px;
+
+    outline: none;
+    border: none;
+    border: 2px solid transparent;
+    border-radius: 5px;
+
+    color: var(--white-smoke);
+    background-color: var(--onyx);
+    font-size: .8rem;
+}
+
+.EditAlbumTitle input:focus {
+    border-color: var(--victory-grey);
+}
+
+.EditAlbumGenre {
+    width: 100%;
+    max-width: 360px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.EditAlbumGenre label {
+    font-size: .8rem;
+    font-weight: bold;
+    margin-left: 3px;
+}
+
+.EditAlbumGenre button {
+    width: fit-content;
+    max-width: 100%;
+    padding: 8px 10px;
+
+    border: 2px solid transparent;
+    border-radius: 5px;
+
+    color: var(--white-smoke);
+    background-color: var(--onyx);
+    font-size: .8rem;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    overflow: hidden;
+}
+
+.EditAlbumGenre span {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.EditAlbumGenre button svg {
+    font-size: .9rem;
+    flex: 0 0 auto;
+}
+
+.EditAlbumActionBtn {
+    width: 100%;
+    display: flex;
+    gap: 15px;
+}
+
+.EditAlbumActionBtn button {
+    border: 0;
+    outline: 0;
+
+    padding: 6px 8px;
+    border-radius: 3px;
+    font-size: .8rem;
+
+    color: var(--onyx);
+    background-color: var(--light-green);
+}
+
+.EditAlbumActionBtn button:first-child {
+    background-color: var(--ciment);
+}
+
+.EditAlbumBody {
+    flex-grow: 1;
+    overflow: hidden;
+
+    padding: 15px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.DeleteTrackCheckbox {
+    width: 40px;
+}
+
+.EditAlbumTopArea {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.EditAlbumTopArea>button {
+    outline: none;
+    border: none;
+    font-size: .9rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: transparent;
+    color: var(--white-smoke);
+}
+
+.EditAlbumTopArea>button svg {
+    font-size: 1.1rem;
+}
+
+.EditAlbumTopArea>h2 {
+    font-size: 1.1rem;
+    color: var(--white-smoke);
+    align-self: flex-start;
+}
+
+.EditAlbumBody>h3 {
+    font-size: 1.2rem;
+    color: var(--ciment);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: italic;
+}
+
+
+/* --------------------------------------------------------- for mobile album edit overlay  */
+.MobileEditTrackOverlay {
+    height: 100%;
+    width: 100%;
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    pointer-events: none;
+
+    transform: translateY(10%) scale(.9);
+    transition: 200ms ease-in-out;
+
+    background-color: inherit;
+}
+
+.ShowOverlayOpacity {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+    pointer-events: unset !important;
+}
+
+
+.BackToEditAlbumBtn {
+    width: 100%;
+    padding: 7px;
+}
+
+.BackToEditAlbumBtn span {
+    height: 20px;
+    width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.BackToEditAlbumBtn span svg {
+    height: 100%;
+    width: 100%;
+}
+
+.EditTrackContainer {
+    width: 100%;
+    max-width: 600px;
+
+    margin: 10px auto;
+    padding: 0 18px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.EditTrackContainer h2 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.EditTrackTop {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-bottom: 18px;
+}
+
+
+.SwitchTrackBtn,
+.EditTrackGenre {
+    max-width: 60%;
+    width: fit-content;
+    min-width: 40%;
+
+    border-radius: 3px;
+    padding: 8px 10px;
+    font-size: .8rem;
+
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    color: var(--white-smoke);
+    background-color: var(--victory-black);
+}
+
+.EditTrackGenre {
+    max-width: 40%;
+    width: fit-content;
+    min-width: unset;
+
+    display: unset;
+    padding: 10px;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    border: 2px solid var(--victory-black);
+    color: var(--victory-grey);
+    background: unset;
+}
+
+.SwitchTrackBtn span:first-child {
+    flex-grow: 1;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.SwitchTrackBtn span:last-child {
+    padding: 3px 5px;
+    border-radius: 3px;
+
+    background-color: var(--obsidian-black);
+}
+
+.EditTrackCenter {
+    width: 100%;
+    margin-bottom: 18px;
+
+    display: flex;
+}
+
+.EditTrackLeft {
+    height: 150px;
+    width: 150px;
+    border-radius: 5px;
+
+    position: relative;
+
+    flex: 0 0 auto;
+
+    background-color: var(--ciment);
+}
+
+.EditTrackLeft img {
+    height: 100%;
+    width: 100%;
+
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.EditTrackLeft span {
+    position: absolute;
+
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--obsidian-black);
+}
+
+.EditTrackLeft span:first-child {
+    top: -5px;
+    right: -5px;
+    font-size: .9rem;
+}
+
+.EditTrackLeft span:last-child {
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+}
+
+.EditTrackRight {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    padding-left: 10px;
+}
+
+.EditTrackTitle {
+    width: 100%;
+    height: fit-content;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.EditTrackTitle label {
+    font-size: .8rem;
+    font-weight: bold;
+    margin-left: 3px;
+}
+
+.EditTrackTitle input {
+    width: 100%;
+    padding: 8px 10px;
+
+    outline: none;
+    border: none;
+    border-radius: 3px;
+
+    font-size: .8rem;
+    color: var(--white-smoke);
+    background-color: var(--victory-black);
+
+}
+
+.EditTrackPreviewer {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.EditTrackPreviewer label {
+    font-size: .8rem;
+    font-weight: bold;
+    margin-left: 3px;
+}
+
+.EditTrackPlaybar {
+    width: 100%;
+    border-radius: 3px;
+    padding: 8px 5px;
+    padding-right: 18px;
+
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    background-color: var(--victory-black);
+    position: relative;
+}
+
+.EditTrackPlaybar span:first-child {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1rem;
+}
+
+.EditTrackPlaybar span:last-child {
+    flex: 0 0 auto;
+    font-size: .7rem;
+}
+
+.ResetTrackBtn {
+    position: absolute;
+    right: 0;
+    top: 50%;
+
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    font-size: .9rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transform: translate(50%, -50%);
+    background-color: var(--obsidian-black);
+}
+
+.EditTrackBtn {
+    height: fit-content;
+    width: fit-content;
+    border-radius: 3px;
+    padding: 8px 10px;
+
+    font-size: .7rem;
+    font-weight: bold;
+
+    color: var(--ciment);
+    background-color: var(--onyx);
+}
+
+.EditTrackBottom {
+    width: 100%;
+
+    display: flex;
+    gap: 5px;
+}
+
+.EditTrackFtArtistsWrapper,
+.EditTrackLanguage {
+    width: 65%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.EditTrackFtArtistsWrapper label,
+.EditTrackLanguage label {
+    font-size: .8rem;
+    font-weight: bold;
+
+    margin-left: 3px;
+}
+
+.EditFtInputBox {
+    width: 100%;
+    position: relative;
+}
+
+.EditFtInputBox input,
+.EditTrackLanguage>span {
+    font-size: .8rem;
+    width: 100%;
+
+    border: none;
+    outline: none;
+
+    padding: 8px 10px;
+    padding-right: 26px;
+    border-radius: 3px;
+
+    color: var(--white-smoke);
+    background-color: var(--victory-black);
+}
+
+.EditFtInputBox span {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+
+    font-size: 1rem;
+
+    display: flex;
+    align-items: center;
+}
+
+.FtArtists {
+    width: 100%;
+
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.FtArtists span {
+    padding: 4px 6px;
+    font-size: .7rem;
+    border-radius: 3px;
+    background-color: var(--victory-black);
+
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.FtArtists span svg {
+    font-size: .8rem;
+    flex: 0 0 auto;
+}
+
+.EditTrackLanguage {
+    width: 35%;
+}
+
+.EditTrackLanguage span {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.EditTrackActionBtn {
+    margin-top: 12px;
+    width: 100%;
+
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.EditTrackActionBtn button {
+    border: none;
+    outline: none;
+
+    width: fit-content;
+    padding: 5px 8px;
+    border-radius: 3px;
+
+    font-size: .7rem;
+    font-weight: bold;
+
+    color: var(--obsidian-black);
+    background-color: var(--light-green);
+}
+
+.EditTrackActionBtn button:first-child {
+    color: var(--ciment);
+    padding: unset;
+    background-color: unset;
+}
+
+/* ----------- to expand/collaps the mobile sidebar  */
+.MobileSidebarExp {
+    transform: translateY(0);
+}
+
+.MobileSidebarColl {
+    transform: translateY(100%);
+}
+
+/* ------------------------------------------------------------for mobile sideber skelton  */
+.SkeletonMobileAlbumSidebar {}
+
+.SkeletonMobileAlbumSidebarContainer {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--onyx);
+    /* display: none; */
+}
+
+/* --------------- skeleton header--------------- */
+.SkHeader {
+    width: 100%;
+    padding-top: 3px;
+    border-bottom-right-radius: 100px;
+}
+
+.SkTopArea {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 7px;
+}
+
+.SkTopArea span:first-child,
+.SkTopArea span:last-child {
+    height: 20px;
+    width: 20px;
+    border-radius: 5px;
+}
+
+.SkTopArea div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+}
+
+.SkTopArea div p:first-child {
+    width: 90px;
+    height: 15px;
+    border-radius: 5px;
+}
+
+.SkTopArea div p:last-child {
+    width: 200px;
+    height: 15px;
+    border-radius: 5px;
+}
+
+.SkBottomArea {
+    width: 100%;
+    padding: 10px 15px;
+    padding-top: 12px;
+    display: flex;
+}
+
+.SkBALeft {
+    width: 200px;
+    aspect-ratio: 1/1;
+    border-radius: 20px;
+    flex: 0 0 auto;
+}
+
+.SkBARight {
+    flex-grow: 1;
+    padding-left: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.SkRTop {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.SkRTop p:first-child {
+    width: 200px;
+    height: 20px;
+    border-radius: 7px;
+}
+
+.SkRTop p:last-child {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 17px;
+}
+
+.SkRTop p:last-child span:first-child {
+    height: 100%;
+    width: 140px;
+    border-radius: 6px;
+}
+
+.SkRTop p:last-child span:last-child {
+    height: 100%;
+    width: 70px;
+    border-radius: 6px;
+}
+
+.SkRBottom {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 45px;
+}
+
+.SkRBottom p {
+    width: 45px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+}
+
+.SkRBottom p span:first-child {
+    width: 100%;
+    height: 13px;
+    border-radius: 4px;
+}
+
+.SkRBottom p span:last-child {
+    width: 60%;
+    height: 11px;
+    border-radius: 3px;
+}
+
+/* --------------- skeleton header--------------- */
+.SkBody {
+    flex-grow: 1;
+    width: 100%;
+    padding: 30px;
+    padding-top: 15px;
+    overflow: hidden;
+}
+
+.SkBody>p {
+    height: 20px;
+    width: 52px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.SkTrack {
+    height: 50px;
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 5px;
+}
+
+.Skeleton {
+    position: relative;
+    overflow: hidden;
+}
+
+.Skeleton::before {
+    content: '';
+    height: 100%;
+    width: 100%;
+    display: block;
+    position: absolute;
+    background: linear-gradient(90deg, transparent, #37414f47, transparent);
+    top: 0%;
+    left: 0px;
+    animation: skeletonAnimation 2s linear infinite;
+}
+
+
+
+/* ------------------------------------------------------------for Error page */
+.ErrorContainer {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    background-color: var(--onyx);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--white-smoke);
+    user-select: none;
+    padding: 10px;
+}
+
+.ErrorContainer h1 {
+    font-size: 4rem;
+}
+
+.ErrorContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.ErrorContent p {
+    font-size: 1.1rem;
+}
+
+.ErrorContent ul {
+    margin-top: 8px;
+    margin-left: 10px;
+}
+
+.ErrorContent ul li {
+    font-size: .9rem;
+    list-style: circle;
+}
+
+.Btns {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.Btns button,
+.Btns a {
+    outline: none;
+    border: none;
+    padding: 0 10px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: var(--onyx);
+    cursor: pointer;
+    background-color: var(--ciment);
+    text-decoration: none;
+}
+
+/* --------- animations ------------------- */
+
+@keyframes Rotate360 {
+    100% {
+        transform: rotateZ(360deg);
+    }
+}
+
+@keyframes marquee {
+    100% {
+        transform: translateX(calc((-100%) - 70px));
+    }
+}
+
+@keyframes skeletonAnimation {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    50% {
+        transform: translateX(50%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+
+
+/* ---------respnsive design------------------- */
+
+@media (max-width:1000px) {
+    .MasterLayoutPlaybar {
+        gap: 35px;
+    }
+
+    .MLPTrackInfo,
+    .MLPRight {
+        width: 130px;
+    }
+}
+
+@media (max-width:884px) {
+
+    * {
+        -webkit-tap-highlight-color: transparent;
+        outline: none;
+    }
+
+    .MasterLayoutPlaybarWrapper {
+        display: none;
+    }
+
+    .AdminPanel {
+        flex-direction: column-reverse;
+        padding: 15px 30px;
+    }
+
+    .PageContainerWrapper {
+        height: unset;
+        width: 100%;
+    }
+
+    .PageContainer {
+        padding: unset;
+    }
+
+    .NavLinksWrapper {
+        margin-right: 12px;
+        overflow: auto hidden;
+
+
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    .Sidebar {
+        width: 99%;
+        align-self: center;
+        flex: 0 0 auto;
+        height: 50px;
+        display: flex;
+        gap: 20px;
+        overflow-y: hidden;
+        position: relative;
+    }
+
+    .Logo {
+        width: 90px;
+        height: 100%;
+        margin: unset;
+        flex-direction: row;
+    }
+
+    .Logo img {
+        width: 25px;
+    }
+
+    .SidebarIcon {
+        width: 40px;
+        margin: unset;
+        padding: 0 5px;
+        cursor: default;
+    }
+
+    .Active {
+        border-radius: unset;
+        transform: scale(1.2);
+        background-color: transparent;
+        color: var(--light-green);
+    }
+
+    .Active span {
+        background-color: var(--midnight-blue-2) !important;
+        color: var(--white-smoke) !important;
+    }
+
+    .ProcessOverview span {
+        top: 10px;
+        right: 1px;
+    }
+
+    .NavbarOverlay {
+        display: flex;
+    }
+
+    .MobileAlbumSidebar {
+        display: flex;
+    }
+
+}
+
+@media (max-width:716px) {
+    .AdminPanel {
+        padding: unset;
+    }
+
+    .Sidebar {
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width:600px) {
+
+    .EditAlbumTopArea>button,
+    .EditAlbumBottomArea {
+        font-size: .8rem;
+    }
+
+    .EditAlbumBottomArea span svg {
+        font-size: 1.1rem;
+    }
+
+    .EditALbumBtn {
+        font-size: .9rem;
+    }
+
+    .SeekbarContainer {
+        display: none;
+    }
+
+    .TrackImg {
+        height: 33px;
+        width: 33px;
+    }
+
+    .TrackImg::before {
+        height: 7px;
+        width: 7px;
+    }
+
+    .TrackImg:hover {
+        height: 38px;
+        width: 38px;
+    }
+
+    .PlaybarLeft {
+        width: 75%;
+    }
+
+    .PlaybarCenter {
+        width: 25%;
+    }
+
+    .UndraggableSeekbar {
+        display: block;
+    }
+
+    .HeaderWrapper,
+    .SkHeader {
+        border-bottom-right-radius: 50px;
+    }
+
+    .ImgContainer,
+    .SkBALeft {
+        width: 130px;
+    }
+
+    .AlbumDataContainer {
+        width: calc(100% - 130px);
+        gap: 15px;
+    }
+
+    .AlbumMeta h2 {
+        font-size: 1rem;
+    }
+
+    .AlbumMeta p {
+        font-size: .8rem;
+    }
+
+    .CreatedAt,
+    .Metric p,
+    .TrackMeta {
+        font-size: .7rem;
+    }
+
+    .AlbumMetrics {
+        gap: 35px;
+    }
+
+    .TrackIndex,
+    .TrackTitle,
+    .Metric span {
+        font-size: .9rem;
+    }
+
+    .TrackTitle {
+        width: 50%;
+    }
+
+    .TrackMeta {
+        width: 50%;
+    }
+
+    .Body,
+    .SkBody {
+        padding: 20px;
+        padding-top: 15px;
+    }
+
+    /* -----------------------------for skeleton sidebar */
+    .SkBARight {
+        gap: 17px;
+    }
+
+    .SkRBottom {
+        gap: 25px;
+    }
+
+    .SkRTop p:first-child {
+        height: 16px;
+        border-radius: 5px;
+    }
+
+    .SkRTop p:last-child {
+        height: 13px;
+    }
+
+    .SkRTop p:last-child span:first-child,
+    .SkRTop p:last-child span:last-child {
+        border-radius: 4px;
+    }
+
+    /* -----------------------------for edit album overlay */
+    .EditAlbumImgWrapper {
+        height: 170px;
+        width: 170px;
+    }
+}
+
+@media (max-width: 520px) {
+    .PlaybarLeft p {
+        font-size: .8rem;
+    }
+
+    /* -----------------------------for edit album overlay */
+    .EditAlbumHeader {
+        padding: 10px;
+        padding-top: 20px;
+    }
+
+    .EditAlbumImgWrapper {
+        height: 150px;
+        width: 150px;
+    }
+
+    .EditAlbumContentWrapper {
+        gap: 9px;
+        padding-left: 8px;
+    }
+
+    .EditAlbumTitle input,
+    .EditAlbumGenre button {
+        padding: 6px 8px;
+    }
+
+}
+
+@media (max-width:471px) {
+    .EditALbumBtn {
+        font-size: .8rem;
+    }
+
+    .SideBtn {
+        display: none;
+    }
+
+    .PlaybarLeft {
+        width: 85%;
+    }
+
+    .PlaybarCenter {
+        width: 15%;
+    }
+
+    .Body>h2 {
+        font-size: .9rem;
+    }
+
+    .ImgContainer,
+    .SkBALeft {
+        width: 100px;
+    }
+
+    .AlbumDataContainer {
+        width: calc(100% - 100px);
+    }
+
+    .TrackIndex,
+    .TrackTitle,
+    .AlbumMeta h2,
+    .Metric span {
+        font-size: .8rem;
+    }
+
+    .TrackTitle {
+        width: 60%;
+    }
+
+    .TrackMeta {
+        width: 40%;
+    }
+
+    .TrackMeta span:last-child {
+        display: none;
+    }
+
+    .TrackIndex,
+    .DeleteTrackCheckbox {
+        width: 35px;
+    }
+
+    .AlbumMeta p,
+    .TrackIndex svg {
+        font-size: .7rem;
+    }
+
+    .CreatedAt {
+        font-size: .6rem;
+    }
+
+    .AlbumMetrics {
+        gap: 30px;
+    }
+
+    .BottomArea,
+    .SkBottomArea {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .Body,
+    .SkBody {
+        padding: 10px;
+        padding-top: 15px;
+    }
+
+    .SoundControlOverlay {
+        bottom: 10px;
+    }
+
+    /* -----------------------------for skeleton sidebar */
+    .SkTopArea div p:first-child {
+        height: 12px;
+        width: 60px;
+        border-radius: 3px;
+    }
+
+    .SkTopArea div p:last-child {
+        height: 12px;
+        width: 150px;
+        border-radius: 3px;
+    }
+
+    .SkBottomArea {
+        padding-top: 17px;
+    }
+
+    .SkBARight {
+        gap: 16px;
+    }
+
+    .SkRTop p:first-child {
+        width: 150px;
+        height: 13px;
+        border-radius: 3px;
+    }
+
+    .SkRTop p:last-child {
+        height: 13px;
+    }
+
+    .SkRTop p:last-child span:first-child {
+        width: 100px;
+    }
+
+    .SkRTop p:last-child span:last-child {
+        width: 50px;
+    }
+
+    .SkRTop p:last-child span:first-child,
+    .SkRTop p:last-child span:last-child {
+        border-radius: 3px;
+    }
+
+    .SkRBottom {
+        gap: 28px;
+    }
+
+    .SkRBottom p {
+        width: 35px;
+        gap: 4px;
+    }
+
+    /* edit track property */
+    .EditTrackContainer {
+        padding: 0 12px;
+    }
+
+    .EditTrackContainer h2 {
+        font-size: 1rem;
+    }
+
+    .EditTrackLeft {
+        height: 135px;
+        width: 135px;
+    }
+
+    .EditTrackRight {
+        padding-left: 8px;
+    }
+
+    .SwitchTrackBtn,
+    .EditTrackTitle input,
+    .EditTrackBtn,
+    .EditFtInputBox input,
+    .EditTrackLanguage span {
+        padding: 6px 8px;
+    }
+
+    .EditTrackPlaybar {
+        padding: 6px 16px 6px 8px;
+    }
+
+    .ResetTrackBtn {
+        height: 22px;
+        width: 22px;
+        font-size: .8rem;
+    }
+
+    .SwitchTrackBtn span:last-child,
+    .EditTrackBtn {
+        font-size: .7rem;
+    }
+
+    .EditTrackPreviewer label,
+    .EditTrackTitle label,
+    .EditTrackFtArtistsWrapper label,
+    .EditTrackLanguage label {
+        font-size: .7rem;
+    }
+
+    .EditTrackGenre {
+        padding: 8px;
+    }
+}
+
+@media (max-width:388px) {
+    .ShowSoundControlOverlay {
+        height: 25px;
+    }
+
+    .SoundControlOverlay span {
+        width: 17px;
+    }
+
+    .SkRTop {
+        gap: 3px;
+    }
+
+    .SkRTop p:first-child {
+        width: 120px;
+        height: 11px;
+    }
+
+    .SkRTop p:last-child {
+        height: 11px;
+    }
+
+    .SkRTop p:last-child span:first-child {
+        width: 90px;
+    }
+
+    .SkRTop p:last-child span:last-child {
+        width: 40px;
+    }
+
+    .SkBARight {
+        gap: 14px;
+    }
+
+    .SkRBottom {
+        gap: 25px;
+    }
+
+    .SkRBottom p {
+        width: 30px;
+        gap: 2px;
+    }
+
+    .SkRBottom p span:first-child {
+        height: 11px;
+        border-radius: 3px;
+    }
+
+    .SkRBottom p span:last-child {
+        height: 9px;
+        width: 65%;
+        border-radius: 2px;
+    }
+
+    .SkBody>p {
+        height: 17px;
+        width: 40px;
+        border-radius: 4px;
+    }
+
+    .SkTrack {
+        height: 45px;
+        margin-bottom: 9px;
+        border-radius: 13px;
+    }
+
+    /* -----------------------------for edit album overlay */
+    .EditAlbumImgWrapper {
+        height: 124px;
+        width: 124px;
+    }
+
+    .EditAlbumTitle input,
+    .EditAlbumGenre button,
+    .EditAlbumActionBtn button {
+        padding: 4px 6px;
+    }
+
+    .EditAlbumImgWrapper span {
+        height: 25px;
+        width: 25px;
+    }
+
+    .EditTrackLeft {
+        height: 120px;
+        width: 120px;
+    }
+}
+
+@media (max-width:350px) {
+    .AlbumMetrics {
+        gap: 20px;
+    }
+
+    .Wrapper {
+        padding: 0 15px;
+    }
+
+    .SkRBottom {
+        gap: 15px;
+    }
+}

@@ -1,0 +1,70 @@
+.Hide{
+    display: none;
+}
+.ShowFlex{
+    display: flex;
+}
+.ShowBlock{
+    display: block;
+}
+.Rotate180{
+    transform: rotateX(180deg);
+}
+.RotateY180{
+    transform: rotateY(180deg);
+}
+.LoaderContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.8);
+    align-items: center;
+    justify-content: center;
+}
+.SeamlessSlider{
+    overflow: hidden;
+    position: relative;
+}
+.SeamlessSlider::before, .SeamlessSlider::after{
+    content: '';
+    display: block;
+    height: 100%;
+    width: 10px;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    user-select: none;
+}
+.SeamlessSlider::before{
+    left: 0;
+    background: linear-gradient(to left, transparent, var(--primarySidebarBc));
+}
+.SeamlessSlider::after{
+    right: 0;
+    background: linear-gradient(to right, transparent, var(--primarySidebarBc));
+}
+.SeamlessSlider span{
+    display: inline-block;
+    animation: marquee 15s linear infinite;  
+}
+.SeamlessSlider span:first-child{
+    margin-right: 70px;
+}
+.Disabled{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    cursor: not-allowed;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+@keyframes marquee {
+    100%{
+        transform: translateX(calc((-100%) - 70px));
+    }
+}

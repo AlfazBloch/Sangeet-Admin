@@ -1,0 +1,38 @@
+.Toastify__toast-container {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    pointer-events: none;
+}
+
+.CustomToast {
+    width: max-content;
+    min-width: 300px;
+    max-width: 70%;
+    
+    background-color: var(--white-smoke);
+    color: var(--midnight-blue-2);
+
+    pointer-events: auto;
+    user-select: none;
+}
+
+.Toastify__close-button {
+    color: var(--silver);
+}
+
+.Toastify__close-button--light {
+    opacity: 1;
+}
+
+@media (max-width: 480px) {
+    .CustomToast {
+        width: 100%;
+        max-width: unset;
+        min-width: unset;
+    }
+}
